@@ -1,4 +1,4 @@
-// dotenv => Librería que trae las variables de entorno
+// dotenv => Librería que trae las variables de entorno (info sensible para proteger)
 import 'dotenv/config'; 
 
 // Import the functions you need from the SDKs you need

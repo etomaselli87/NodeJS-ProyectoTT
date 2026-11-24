@@ -16,8 +16,9 @@ import { db } from '../data/data.js';
 
 export const obtenerProductos = async () => {
   try {
-    //Busca los documentos de la colleccion, los mapea y le extrae el id y data
+    //Hace una captura del momento de consulta, busca los documentos de la colleccion, los mapea y le extrae el id y data
     const querySnapshot = await getDocs(collection(db, "products"));
+    //Retorna una lista nueva .map, por cada documento trae un objeto
     return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
     console.error(`Error obteniendo la colección PRODUCTS:`, error);
