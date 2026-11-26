@@ -10,6 +10,6 @@ export const authentication = (req, res, next) => {
 
     jwt.verify(token, secret_key, (err) => { 
         if (err) return res.sendStatus(403); 
-            next(); 
+        next(); 
     }); 
 }

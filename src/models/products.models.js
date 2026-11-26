@@ -1,11 +1,13 @@
 //CAPA DE MODELO => Funciones para manipular colecciones y documentos => Importo funciones de Filestore
 
-
 import {
   collection,
   getDocs,
   doc,
   getDoc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
   query,
   where
 } from 'firebase/firestore';
@@ -51,6 +53,29 @@ export const buscarPorConsulta = async (valor) => {
     return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
     console.error(`Error realizando la consulta en products:`, error);
+    throw error;
+  }
+};
+
+
+export const crearProducto = async (nuevoProducto) => {
+  try {
+    const docRef = await addDoc(collection(db, "products"), nuevoProducto);
+    return { id: docRef.id, ...nuevoProducto };
+  } catch (error) {
+    console.error(`Error creando el producto en products:`, error)
+    throw error;
+  }
+};
+
+
+export const eliminarProducto = async (idDocumento) => {
+  try {
+    const docRef = doc(db, "products", idDocumento);
+    await deleteDoc(docRef);
+    return idDocumento;
+  } catch (error) {
+    console.error(`Error eliminando el documento con ID ${idDocumento}:`, error)
     throw error;
   }
 };

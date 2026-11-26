@@ -15,7 +15,9 @@ const app = express();
 //Prueba libreria nodemon control para desarrollador
 console.log("Test nodemon");
 
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 
 app.use(bodyParser.json()); 
 

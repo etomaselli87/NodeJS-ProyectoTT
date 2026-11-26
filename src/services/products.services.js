@@ -245,7 +245,7 @@
 //Y CAPA MODELS TRAE DE LA BASE DE DATOS
 
 //IMPORTAR PRODUCTOS PARA TRAERLOS DESDE LA CAPA DE MODELOS
-import { buscarPorConsulta, obtenerPorId, obtenerProductos } from "../models/products.models.js";
+import { buscarPorConsulta, crearProducto, eliminarProducto, obtenerPorId, obtenerProductos } from "../models/products.models.js";
 
 export const getAllProductsService = async (category) => {
     if(category){
@@ -258,7 +258,18 @@ export const getAllProductsService = async (category) => {
     }
 }
 
+
 export const getProductService = async (id) => {
   const product = await obtenerPorId(id)
   return product
+}
+
+export const createProductService = async (product) => {
+  const new_product = await crearProducto(product);
+  return new_product;
+}
+
+export const deleteProductService = async (id) => {
+  const id_eliminado = await eliminarProducto(id);
+  return id_eliminado;
 }
