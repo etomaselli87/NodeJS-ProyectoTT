@@ -91,7 +91,7 @@ export async function deleteProduct(req, res) {
     const id = req.params.id;
     if(id){
         try{
-            const product = await deleteProductService(id);
+            const id_eliminado = await deleteProductService(id);
             console.log(id_eliminado)
             if(id_eliminado){
                 res.send({

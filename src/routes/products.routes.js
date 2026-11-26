@@ -20,7 +20,7 @@ routes.get("/products/:id", getProduct);
 
 routes.post("/products/create", authentication, createProduct);
 
-routes.delete("/products/delete", authentication, deleteProduct);
+routes.delete("/products/:id", authentication, deleteProduct);
 
 
 //Exporta por defecto las distintas rutas con el llamado a su función controladora correspondiente
